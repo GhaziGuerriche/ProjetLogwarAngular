@@ -1,4 +1,5 @@
 export interface Transaction {
-    ammount : number;
-    date : Date;
+    id : number;
+    ammout : number;
+    date : number;
 }

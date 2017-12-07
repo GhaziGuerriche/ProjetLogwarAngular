@@ -8,14 +8,14 @@ import {Transaction } from '../Model/Transaction'
   providers : [AccountHistoryService]
 })
 export class AccountHistoryComponent implements OnInit {
- transactions = Array<Transaction>();
+ transactions : Transaction[];
  accountHistoryService : AccountHistoryService;
   constructor(accountHistoryService : AccountHistoryService) { 
     this.accountHistoryService=accountHistoryService;
   }
   getTransactionsByAccount(){
-    this.accountHistoryService.getTransactionsByReference('http://localhost:8084/api/account/6535615/transactions').subscribe(
-      res => this.transactions = res,
+    this.accountHistoryService.getTransactionsByReference('./api/transaction').subscribe(
+      (res) => this.transactions = res.json(),
       error => console.error('Error: ' + error),
       () => console.log('Completed!')
 

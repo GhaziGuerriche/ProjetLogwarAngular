@@ -1,1 +1,25 @@
-{{transactions}}
+<table id="list" class="table  table-hover dataTable  dt-responsive fontRegular no-footer dtr-inline" cellspacing="0" width="100%"
+    role="grid" aria-describedby="list_info">
+
+    <thead>
+        <tr role="row">
+            <th class="sorting_disabled" rowspan="1" colspan="1">operation Date</th>
+            <th class="sorting_disabled" rowspan="1" colspan="1">Libellé opération</th>
+            <th class="sorting_disabled" rowspan="1" colspan="1">Ref.</th>
+            <th class="sorting_disabled debit" rowspan="1" colspan="1">withdrawal</th>
+            <th class="sorting_disabled credit" rowspan="1" colspan="1">Deposit</th>
+            <th class="sorting_disabled" rowspan="1" colspan="1">Ref.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let t in transactions">
+                <td>{{t.date}}</td>
+                <td>test</td>
+                <td>{{t.id}}</td>
+                <td>{{t.ammout}}</td>
+                <td>{{t.ammout}}</td>
+                <td>test</td>
+
+            </tr>
+    </tbody>
+</table>
