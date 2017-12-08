@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Account} from '../../Model/Account';
+import { RouterModule, Router } from '@angular/router';
 import {AccountAuthentificationService} from '../../Service/account-authentification.service'
 @Component({
   selector: 'app-account-authentification',
@@ -10,29 +11,28 @@ import {AccountAuthentificationService} from '../../Service/account-authentifica
 })
 export class AccountAuthentificationComponent implements OnInit {
   isAccount : boolean = false;
-  account : Account;
+  accountNumber : Number;
+  router : Router;
   accountAuthentificationService : AccountAuthentificationService;
   submitted = false;
-  constructor(accountAuthentification : AccountAuthentificationService) {
+  constructor(router : Router,accountAuthentification : AccountAuthentificationService) {
   this.accountAuthentificationService = accountAuthentification;
-   }
+    this.router= router;
+}
   @Output() accountEvent = new EventEmitter<Account>();
 
   onSubmit(accountForm: NgForm){this.submitted=true;
     this.isValidAccount(accountForm.value.accountNumber);
     if(this.isAccount == true){
-      this.getAccount(accountForm.value.accountNumber);
-      this.sendAccount();
+      this.accountNumber = accountForm.value.accountNumber;
+      this.router.navigate(['account/history',this.accountNumber])
     }else{
-
+      
     }
 
   }
   ngOnInit() {
     
-  }
-  sendAccount(){
-    this.accountEvent.emit(this.account);
   }
   isValidAccount(accountNumber){
      this.accountAuthentificationService.isValidAccount(accountNumber).subscribe(
@@ -42,11 +42,5 @@ export class AccountAuthentificationComponent implements OnInit {
     );
     
   }
-  getAccount(accountNumber){
-    this.accountAuthentificationService.getAccount(accountNumber).subscribe(
-      (res) => this.account = res.json(),
-      error => console.error('Error: ' + error),
-      () => console.log('Completed!')
-    );
-  }
+
 }

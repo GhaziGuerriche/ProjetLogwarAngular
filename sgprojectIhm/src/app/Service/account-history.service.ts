@@ -5,8 +5,12 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class AccountHistoryService {
+  getAccountUrl = 'account/';
   constructor(private http: Http) { }  
   getTransactionsByReference(urlTransaction : string){
   return this.http.get(urlTransaction);
+};
+getAccount(accountNumber : number){
+  return this.http.get(this.getAccountUrl+accountNumber);
 }
 }
