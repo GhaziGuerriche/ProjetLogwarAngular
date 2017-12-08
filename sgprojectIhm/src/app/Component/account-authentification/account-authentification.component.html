@@ -1,0 +1,17 @@
+<img src="/assets/img/logo-societe-generale.jpg">
+
+<fieldset *ngIf="!isAccount" class="container" style="width:40% ">
+    <form #accountForm="ngForm" (ngSubmit)="onSubmit(accountForm)">
+      <div class="form-group" style="text-align: center">
+        <label for="accountNumber">Account Number :</label>
+        <input type="text" class="form-control"  ngModel  id="accountNumber" name ="accountNumber" #accountNumber="ngModel" required>
+        <div *ngIf="!isAccount && submitted"
+        class="alert alert-danger">
+        Invalid Account! please enter valid Account Number
+    </div>
+      </div>
+      <button type="submit" class="btn btn-success" style="float: right">Submit</button>
+    </form>
+</fieldset>
+
+<app-account-history  [account]="account"></app-account-history>

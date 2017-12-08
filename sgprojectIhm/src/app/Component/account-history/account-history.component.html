@@ -1,0 +1,31 @@
+<table id="list">
+
+    <thead>
+        <tr>
+            <th>operation Date</th>
+            <th>Description</th>
+            <th>Ref.</th>
+            <th>withdrawal</th>
+            <th>Deposit</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let t of transactions">
+            <td>{{t.date | date}}</td>
+            <td>{{t.description}}</td>
+            <td>{{t.id}}</td>
+            <td>{{t.withdrawal}}</td>
+            <td>{{t.deposit}}</td>
+            <td>test</td>
+
+        </tr>
+    </tbody>
+</table>
+<script> var webGlObject = (function() { 
+  return { 
+    init: function() { 
+      alert('webGlObject initialized');
+    } 
+  } 
+})(webGlObject||{})</script>

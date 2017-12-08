@@ -1,5 +1,8 @@
 export interface Transaction {
     id : number;
-    ammout : number;
+    description :string;
+    deposit : number;
+    withdrawal : number;
     date : number;
+    balance :number;
 }
