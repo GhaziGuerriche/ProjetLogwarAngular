@@ -1,31 +1,49 @@
-<table id="list">
+<div>
+<section>
+    <form *ngIf="!isAccount" #dateForm="ngForm" (ngSubmit)="onSubmit(dateForm)">
+        <div class="form-group" style="text-align: center;display: inline-block;">
+            <label for="starDate">star date :</label>
+            <input type="date" class="form-control" ngModel id="starDate" name="starDate" #starDate="ngModel" required>
+        </div>
+        <div class="form-group" style="text-align: center;display: inline-block;">
+            <label for="endDate">end date :</label>
+            <input type="date" class="form-control" ngModel id="endDate" name="endDate" #endDate="ngModel" required>
+        </div>
+        <button type="submit" class="btn btn-success" >Submit</button>
+    </form>
+</section>
+<section>
+    <table #list id="list">
+        <thead>
+            <tr>
+                <th>operation Date</th>
+                <th>Description</th>
+                <th>Ref.</th>
+                <th>withdrawal</th>
+                <th>Deposit</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of transactions">
+                <td>{{t.date | date}}</td>
+                <td>{{t.description}}</td>
+                <td>{{t.id}}</td>
+                <td>{{t.withdrawal}}</td>
+                <td>{{t.deposit}}</td>
+                <td>{{t.balance}}</td>
 
-    <thead>
-        <tr>
-            <th>operation Date</th>
-            <th>Description</th>
-            <th>Ref.</th>
-            <th>withdrawal</th>
-            <th>Deposit</th>
-            <th>Balance</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let t of transactions">
-            <td>{{t.date | date}}</td>
-            <td>{{t.description}}</td>
-            <td>{{t.id}}</td>
-            <td>{{t.withdrawal}}</td>
-            <td>{{t.deposit}}</td>
-            <td>test</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<hr>
+<br><br>
+<section style="float: right">
 
-        </tr>
-    </tbody>
-</table>
-<script> var webGlObject = (function() { 
-  return { 
-    init: function() { 
-      alert('webGlObject initialized');
-    } 
-  } 
-})(webGlObject||{})</script>
+    <div style="display: inline-block;">
+    <b>    {{today | date : 'yyyy/MM/dd'}}</b>
+    </div>
+    <div *ngIf="account != undefined" style="display: inline-block ;margin-left: 50px "><b>Balance : {{ account.balance}}</b></div>
+</section>
+</div>

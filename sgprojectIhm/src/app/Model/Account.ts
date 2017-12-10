@@ -1,7 +1,7 @@
 import { Transaction } from './Transaction'
-export interface Account{
+import { Client } from './Client';
+export class Account{
     accountNumber : number;
     balance : number;
-    transactions : Array<Transaction>
-    
+    client : Client;
 }

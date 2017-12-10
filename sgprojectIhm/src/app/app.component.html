@@ -1,5 +1,78 @@
-<!--The content below is only a placeholder and can be replaced.-->
 
+<div id="main-wrapper">
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <!-- Logo icon -->
+                    <b>
+                            <img src="../assets/img/logo-societe-generale.jpg" alt="homepage" class="dark-logo">
+                            
+                    </b>
+                </a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)">
+                            <i class="ti-menu"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav my-lg-0">
+                    <li class="nav-item" *ngIf="getAccount() != null">
+                        <a [routerLink]="['login']">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar" *ngIf="getAccount() != null">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar ps ps--theme_default" data-ps-id="24d0ca08-273c-1582-969d-1daa8b35f2cc">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li>
+                        <a class="waves-effect waves-dark" (click)="goToHistory()" class="hoverLink" [routerLink]="['account/history',getAccount()]"
+                            aria-expanded="false">
+                            <span class="hide-menu">Account History</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-dark" (click)="goTodeposite()" [routerLink]="['account/deposit',getAccount()]" aria-expanded="false">
+                            <span class="hide-menu">Deposit</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-dark" (click)="goTowithdrawl()" [routerLink]="['account/withdrawl',getAccount()]" aria-expanded="false">
+                            <span class="hide-menu">Withdrawal</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+            <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                <div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">
+                <div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+            </div>
+        </div>
+    </aside>
+    <div class="page-wrapper" style="min-height: 351px;">
+        <div class="container-fluid">
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Welcome!</h3>
+                </div>
 
-<router-outlet></router-outlet>
-<app-account-authentification ></app-account-authentification>
+            </div>
+            <div class="row">
+                <router-outlet></router-outlet>
+
+            </div>
+        </div>
+        <footer class="footer"> © 2017 </footer>
+    </div>
+</div>

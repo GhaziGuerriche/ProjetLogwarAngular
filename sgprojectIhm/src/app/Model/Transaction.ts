@@ -1,8 +1,11 @@
-export interface Transaction {
+import { Account } from "./Account";
+
+export class Transaction {
     id : number;
     description :string;
     deposit : number;
     withdrawal : number;
     date : number;
-    balance :number;
+    account : Account;
+    balance : number;
 }
